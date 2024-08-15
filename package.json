@@ -11,6 +11,7 @@
   "description": "How to use Google drive API",
   "dependencies": {
     "dotenv": "^16.4.5",
-    "googleapis": "^140.0.1"
+    "googleapis": "^140.0.1",
+    "mime": "^4.0.4"
   }
 }

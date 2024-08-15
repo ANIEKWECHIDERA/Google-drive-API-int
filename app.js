@@ -15,17 +15,35 @@ oauth2Client.setCredentials({
 });
 
 const drive = google.drive({ version: "v3", auth: oauth2Client });
-const filePath = path.join(__dirname, "DWBB Academy Webinar Flier.jpg");
+const filePath = path.join(
+  __dirname,
+  "pC-c4kxcgLxiliked_by-20240809_144730-An8Co9FDRy_cba6ZKpxTIgoeXYSjIp8HMnL_RbJMrE53oghD29GOvEgOhkmROYf4VN6gl9du4uoSKBll7bTpnF3S.mp4"
+);
+const mimeType = getMimeType(filePath);
 
+// Helper function to detect MIME type
+function getMimeType(filePath) {
+  const ext = path.extname(filePath).toLowerCase();
+  switch (ext) {
+    case ".mp4":
+      return "video/mp4";
+    case ".jpeg":
+    case ".jpg":
+      return "image/jpeg";
+    // Add more MIME types if necessary
+    default:
+      return "application/octet-stream";
+  }
+}
 async function uploadFile() {
   try {
     const response = await drive.files.create({
       requestBody: {
-        name: "DWBB Academy Webinar Flier.jpg",
-        mimeType: "image/jpeg",
+        name: path.basename(filePath),
+        mimeType: mimeType,
       },
       media: {
-        mimeType: "image/jpeg",
+        mimeType: mimeType,
         body: fs.createReadStream(filePath),
       },
     });
@@ -36,7 +54,7 @@ async function uploadFile() {
   }
 }
 
-// uploadFile();
+uploadFile();
 
 //function for deleting a file
 async function deleteFile() {
