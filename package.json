@@ -8,5 +8,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "How to use Google drive API"
+  "description": "How to use Google drive API",
+  "dependencies": {
+    "googleapis": "^140.0.1"
+  }
 }
