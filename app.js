@@ -36,7 +36,7 @@ async function uploadFile() {
   }
 }
 
-uploadFile();
+// uploadFile();
 
 //function for deleting a file
 async function deleteFile() {
@@ -53,3 +53,26 @@ async function deleteFile() {
 // deleteFile();
 
 //generate public URL
+async function generatePublicUrl() {
+  try {
+    const fileId = "1AH3wcjZ4L2S7Y0hvYLk-X0U4EEUndvZu";
+    const response = await drive.permissions.create({
+      fileId: fileId,
+      requestBody: {
+        role: "reader",
+        type: "anyone",
+      },
+    });
+
+    const result = await drive.files.get({
+      fileId: fileId,
+      fields: "webContentLink",
+    });
+
+    console.log(result.data, response.status);
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+generatePublicUrl();
