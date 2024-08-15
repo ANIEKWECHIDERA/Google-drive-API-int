@@ -10,6 +10,7 @@
   "license": "ISC",
   "description": "How to use Google drive API",
   "dependencies": {
+    "dotenv": "^16.4.5",
     "googleapis": "^140.0.1"
   }
 }
