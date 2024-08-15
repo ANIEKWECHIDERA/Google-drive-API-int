@@ -73,7 +73,7 @@ async function deleteFile() {
 //generate public URL
 async function generatePublicUrl() {
   try {
-    const fileId = "1AH3wcjZ4L2S7Y0hvYLk-X0U4EEUndvZu";
+    const fileId = "";
     const response = await drive.permissions.create({
       fileId: fileId,
       requestBody: {
@@ -93,4 +93,4 @@ async function generatePublicUrl() {
   }
 }
 
-generatePublicUrl();
+// generatePublicUrl();
